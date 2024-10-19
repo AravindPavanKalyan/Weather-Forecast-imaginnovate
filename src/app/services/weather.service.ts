@@ -12,8 +12,7 @@ export class WeatherService {
   constructor(private http: HttpClient) {}
 
   async getCoordinates(city: string) {
-    const apiKey = 'YOUR_API_KEY'; // Replace with your OpenWeatherMap API key
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKey}`;
+    const url = `${environment.cityWeatherApiUrl}${city}&appid=${this.apiKey}`;
 
     try {
       const response = await fetch(url);
