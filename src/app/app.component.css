@@ -1,0 +1,132 @@
+/* Container for the whole weather app */
+.weather-container {
+    text-align: center;
+    color: #e97025;
+    padding: 20px;
+  }
+
+  .heading {
+    display: flex;
+    flex-direction: row;
+  }
+
+  h1 {
+    width: 33%;
+  }
+  
+  /* Search Bar Container */
+  .search-container {
+    align-self: end;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Search Input Box */
+  .search-input {
+    padding: 10px;
+    border: 2px solid #e97025;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 200px;
+    margin-right: 10px;
+  }
+  
+  /* Search Button */
+  .search-button {
+    width: fit-content;
+    background-color: #e97025;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .search-button:hover {
+    background-color: #d8601f;
+  }
+  
+  /* Loader */
+  .loading-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+  }
+  
+  /* Forecast Cards - Responsive Layout */
+  .forecast-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .forecast-card {
+    /* background-color: #f9f9f9; */
+    /* border: 2px solid #e97025; */
+    /* border-radius: 4px; */
+    width: 220px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .forecast-card h2 {
+    background-color: #e97025;
+    color: white;
+    padding: 5px;
+    font-size: 18px;
+    margin: 0;
+    border-radius: 4px 4px 0 0;
+  }
+  
+  .forecast-card table {
+    width: 100%;
+    /* margin-top: 10px; */
+    border-collapse: collapse;
+  }
+  
+  .forecast-card th, .forecast-card td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .forecast-card th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .forecast-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .heading {
+        display: flex;
+        flex-direction: column;
+    }
+
+    h1 {
+        width: 100%;
+    }
+
+    .search-container {
+        align-self: center;
+        display: grid;
+        gap: 20px;
+        justify-items: center;
+    }
+  
+    .search-input {
+      width: 150px;
+    }
+  
+    .forecast-card {
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+  
