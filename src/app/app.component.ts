@@ -1,14 +1,6 @@
 import { Component } from '@angular/core';
 import { WeatherService } from './services/weather.service';
-
-// Define the WeatherSummary interface
-export interface WeatherSummary {
-  date: string; // Formatted date string
-  minTemp: number; // Minimum temperature
-  maxTemp: number; // Maximum temperature
-  pressure: number; // Atmospheric pressure
-  humidity: number; // Humidity percentage
-}
+import { WeatherSummary } from './interfaces/i-weather-forecast';
 
 @Component({
   selector: 'app-root',
