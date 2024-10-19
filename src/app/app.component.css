@@ -71,15 +71,30 @@
     width: 220px;
     padding: 10px;
     margin-bottom: 20px;
+    color: black;
   }
   
-  .forecast-card h2 {
+  .forecast-card .date {
     background-color: #e97025;
-    color: white;
+    /* color: white; */
     padding: 5px;
     font-size: 18px;
+    border: 1px solid black;
     margin: 0;
-    border-radius: 4px 4px 0 0;
+    /* border-radius: 4px 4px 0 0; */
+  }
+
+  .bg-lg {
+    background-color: lightgrey;
+  }
+
+  .forecast-card .temp {
+    color: black;
+    padding: 5px;
+    border-left: 1px solid black; /* Left border */
+    border-right: 1px solid black; /* Right border */
+    font-size: 18px;
+    margin: 0;
   }
   
   .forecast-card table {
@@ -90,7 +105,7 @@
   
   .forecast-card th, .forecast-card td {
     padding: 8px;
-    border: 1px solid #ddd;
+    border: 1px solid black;
   }
   
   .forecast-card th {

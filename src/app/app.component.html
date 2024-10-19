@@ -5,8 +5,9 @@
     <!-- Search Bar -->
     <div class="search-container">
       <input type="text" placeholder="Enter city name" class="search-input" #cityInput>
-      <button class="search-button" (click)="searchWeather(cityInput.value)">Search</button>
-      <img *ngIf="isLoading" src="path-to-loader-image" alt="Loading..." class="loading-icon">
+      <button class="search-button" (click)="searchWeather(cityInput.value)">search</button>
+      <img *ngIf="isLoading" src="./../assets/1_QHTfTrNDMazdIE_KFwpMyA.gif" alt="Loading..." class="loading-icon">
+      <!-- <ngx-spinner type="ball-scale-multiple"></ngx-spinner> -->
     </div>
   </div>
 
@@ -14,23 +15,19 @@
   <!-- Forecast Cards -->
   <div class="forecast-wrapper">
     <div class="forecast-card" *ngFor="let forecast of forecasts">
-      <h2>Date: {{ forecast.date | date: 'dd/MM/yyyy' }}</h2>
+      <div class="date">Date: {{ forecast.date | date: 'dd/MM/yyyy' }}</div>
+      <div class="temp bg-lg">Temperature</div>
       <table>
         <thead>
-          <tr>
-            <th>Temperature</th>
-            <!-- <th>Min</th> -->
-            <!-- <th>Max</th> -->
-          </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Min</td>
-            <td>Max</td>
+            <td class="bg-lg">Min</td>
+            <td class="bg-lg">Max</td>
           </tr>
           <tr>
-            <td>{{ (forecast.minTemp - 273.15) | number: '1.0-0' }}&#176;C</td>
-            <td>{{ (forecast.maxTemp - 273.15) | number: '1.0-0' }}&#176;C</td>
+            <td class="bg-lg">{{ (forecast.minTemp) | number: '1.0-0' }}&#176;C</td>
+            <td class="bg-lg">{{ (forecast.maxTemp) | number: '1.0-0' }}&#176;C</td>
           </tr>
           <tr>
             <td>Pressure</td>

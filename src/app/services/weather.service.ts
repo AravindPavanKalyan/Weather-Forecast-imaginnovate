@@ -1,37 +1,47 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, of } from 'rxjs';
+import { map} from 'rxjs';
 import { environment } from './../../environments/environment';
-
-// Define interfaces for the expected response from OpenWeatherMap
-export interface Forecast {
-  dt: number; // Date and time
-  main: {
-    temp: number;
-    pressure: number;
-    humidity: number;
-  };
-}
-
-export interface WeatherResponse {
-  list: Forecast[];
-}
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherService {
-  private appid = `5796abbde9106b7da4febfae8c44c232`;
+  private apiKey = `5796abbde9106b7da4febfae8c44c232`;
 
   constructor(private http: HttpClient) {}
 
-  getWeatherData(city: string): Observable<WeatherResponse> {
-    const url = `${environment.weatherApiUrl}${city}&appid=${this.appid}&units=metric`; // Use metric units
-    return this.http.get<WeatherResponse>(url).pipe(
-      catchError(error => {
-        console.error('Error fetching weather data:', error);
-        return of({ list: [] }); // Return an empty forecast list on error
-      })
+  async getCoordinates(city: string) {
+    const apiKey = 'YOUR_API_KEY'; // Replace with your OpenWeatherMap API key
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKey}`;
+
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error('City not found');
+      }
+      const data = await response.json();
+      const { lat, lon } = data.coord; // Extract latitude and longitude
+      return { lat, lon };
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  }
+
+  getWeatherData(lat: string, lon: string) {
+    const url = `${environment.weatherApiUrl}lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`; // Use metric units
+    return this.http.get(url).pipe(
+      map(
+        (response: any) => {
+          if (response) {
+            return response;
+          }
+        },
+        (error: any) => {
+          return error;
+        }
+      )
     );
   }
 }
